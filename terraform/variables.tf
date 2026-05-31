@@ -28,6 +28,11 @@ variable "KEYVAULT_NAME" {
   description = "Name of the key vault (must be globally unique, 3-24 chars)."
 }
 
+variable "DEPLOYER_OBJECT_ID" {
+  type        = string
+  description = "Object ID of the user running Terraform (az ad signed-in-user show --query id -o tsv)."
+}
+
 variable "APP_SERVICE_PLAN_NAME" {
   type        = string
   description = "Name of the app service plan."

@@ -1,5 +1,3 @@
-data "azurerm_client_config" "current" {}
-
 resource "azurerm_key_vault" "kv" {
   name                = join("", [var.KEYVAULT_NAME, tostring(random_integer.suffix.result)])
   resource_group_name = azurerm_resource_group.rg.name
@@ -10,7 +8,7 @@ resource "azurerm_key_vault" "kv" {
 
   access_policy {
     tenant_id = var.TF_VAR_TENANT_ID
-    object_id = data.azurerm_client_config.current.object_id
+    object_id = var.DEPLOYER_OBJECT_ID
 
     secret_permissions = [
       "Get", "List", "Set", "Delete", "Purge"

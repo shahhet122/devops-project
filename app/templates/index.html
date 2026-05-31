@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Gallery</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    h1   { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #ddd; }
+    th { background: #f4f4f4; }
+    a  { color: #0078d4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .empty { color: #888; margin-top: 20px; }
+    .upload-link { display: inline-block; margin-top: 20px; background: #0078d4; color: white; padding: 10px 20px; border-radius: 4px; }
+    .upload-link:hover { background: #005fa3; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>Image Gallery</h1>
+  <p>All files stored in the Azure Storage Account.</p>
+
+  {% if blobs %}
+  <table>
+    <tr><th>File Name</th><th>Download</th></tr>
+    {% for blob in blobs %}
+    <tr>
+      <td>{{ blob.name }}</td>
+      <td><a href="{{ blob.url }}" target="_blank">Download</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">No files uploaded yet.</p>
+  {% endif %}
+
+  <br>
+  <a class="upload-link" href="{{ url_for('upload') }}">Upload a new image</a>
+</body>
+</html>
