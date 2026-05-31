@@ -79,6 +79,36 @@ The `.terraform/` directory and any `.tfstate` files are not committed to Git â€
 
 ---
 
+## Prerequisites
+
+The following tools must be installed before running the Terraform definition:
+
+**1. Azure CLI**
+```bash
+brew install azure-cli
+```
+Used to authenticate to Azure. After installing, log in with:
+```bash
+az login
+```
+
+**2. Terraform**
+```bash
+brew install hashicorp/tap/terraform
+```
+Version required: `~> 3.0.2` for the azurerm provider (pinned in `provider.tf`).
+
+**3. An Azure account with sufficient permissions**
+- An active Azure subscription (Student or paid)
+- Permission to create Resource Groups, Storage Accounts, Key Vaults, and App Services
+- Your Tenant ID: `az account show --query tenantId -o tsv`
+- Your Subscription ID: `az account show --query id -o tsv`
+- Your Object ID: `az ad signed-in-user show --query id -o tsv`
+
+Fill these three values into `main.tfvars` before running.
+
+---
+
 ## Terraform Definition
 
 ### How to run
