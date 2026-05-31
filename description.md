@@ -50,12 +50,12 @@ The App Service reads the storage connection string at runtime through a Key Vau
 
 | Resource | How it authenticates |
 |---|---|
-| Terraform (local run) | Uses the logged-in Azure CLI session (`az login`) — the `data "azurerm_client_config" "current"` block reads the current user's object ID automatically |
-| Key Vault access policy | Grants `Get`, `List`, `Set`, `Delete`, `Purge` on secrets to whoever is running Terraform, so the connection string secret can be created |
+| Terraform (local run) | Uses the logged-in Azure CLI session (`az login`) — the deployer's object ID is passed in via `DEPLOYER_OBJECT_ID` variable (retrieved with `az ad signed-in-user show --query id -o tsv`) |
+| Key Vault access policy | Grants `Get`, `List`, `Set`, `Delete`, `Purge` on secrets to the deployer's object ID, so Terraform can create the connection string secret |
 | App Service → Key Vault | System-Assigned Managed Identity — Azure manages the credential automatically, no passwords or keys needed |
 | App Service → Storage | Via the connection string retrieved from Key Vault at runtime |
 
-No credentials are hardcoded anywhere. The `main.tfvars` file only contains the tenant ID and subscription ID, which are not secrets.
+No credentials are hardcoded anywhere. The `main.tfvars` file contains the tenant ID, subscription ID, and the deployer's object ID — none of which are passwords or access keys.
 
 ---
 
@@ -122,6 +122,6 @@ terraform destroy -var-file="main.tfvars"
 
 **`sa.tf`** — creates the Storage Account (name = variable + random suffix, Standard LRS, HTTPS only) and the `images` blob container inside it with private access.
 
-**`kv.tf`** — reads the current Azure client config to get the deployer's object ID, creates the Key Vault, sets an access policy for the deployer, and stores the storage account's primary connection string as a secret named `storage-connection-string`.
+**`kv.tf`** — creates the Key Vault in `francecentral`, sets an access policy for the deployer using the `DEPLOYER_OBJECT_ID` variable, and stores the storage account's primary connection string as a secret named `storage-connection-string`.
 
 **`appservice.tf`** — creates the App Service Plan (Free tier) and the Web App. The web app is given a System-Assigned Managed Identity and two app settings: the Key Vault reference to the connection string, and the container name.
