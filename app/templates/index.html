@@ -2,257 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevOps Project</title>
+  <title>Image Gallery</title>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #0f1117;
-      color: #e2e8f0;
-      min-height: 100vh;
-    }
-
-    /* NAV */
-    nav {
-      background: #1a1d27;
-      border-bottom: 1px solid #2d3148;
-      padding: 0 40px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-brand {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .nav-brand .badge {
-      background: linear-gradient(135deg, #0078d4, #50c2ff);
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .nav-actions a {
-      background: linear-gradient(135deg, #0078d4, #005fa3);
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      transition: opacity 0.2s;
-    }
-    .nav-actions a:hover { opacity: 0.85; }
-
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
-      border-bottom: 1px solid #2d3148;
-      padding: 48px 40px 40px;
-    }
-    .hero h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .hero h1 span { color: #50c2ff; }
-    .hero p { color: #8892a4; font-size: 0.95rem; }
-
-    /* STATS BAR */
-    .stats-bar {
-      display: flex;
-      gap: 32px;
-      padding: 16px 40px;
-      background: #13161f;
-      border-bottom: 1px solid #2d3148;
-    }
-    .stat { display: flex; align-items: center; gap: 8px; }
-    .stat-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
-    .stat-dot.blue { background: #0078d4; }
-    .stat-label { font-size: 0.8rem; color: #8892a4; }
-    .stat-value { font-size: 0.8rem; color: #e2e8f0; font-weight: 600; }
-
-    /* MAIN */
-    main { padding: 36px 40px; }
-
-    .section-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 20px;
-    }
-
-    /* EMPTY STATE */
-    .empty-state {
-      text-align: center;
-      padding: 80px 20px;
-      color: #4a5568;
-    }
-    .empty-state .icon {
-      font-size: 4rem;
-      margin-bottom: 16px;
-    }
-    .empty-state h3 { color: #718096; margin-bottom: 8px; }
-    .empty-state p { font-size: 0.9rem; }
-    .empty-state a {
-      display: inline-block;
-      margin-top: 20px;
-      background: linear-gradient(135deg, #0078d4, #005fa3);
-      color: #fff;
-      padding: 10px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    /* IMAGE GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #1a1d27;
-      border: 1px solid #2d3148;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .card:hover { transform: translateY(-3px); border-color: #0078d4; }
-    .card-thumb {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      background: #0f1117;
-      display: block;
-    }
-    .card-thumb-placeholder {
-      width: 100%;
-      height: 150px;
-      background: linear-gradient(135deg, #1e2235, #252a3d);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-    }
-    .card-body { padding: 12px 14px; }
-    .card-name {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #e2e8f0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 10px;
-    }
-    .card-download {
-      display: block;
-      text-align: center;
-      background: rgba(0,120,212,0.15);
-      border: 1px solid rgba(0,120,212,0.4);
-      color: #50c2ff;
-      padding: 7px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-    .card-download:hover { background: rgba(0,120,212,0.3); }
-
-    /* FOOTER */
-    footer {
-      margin-top: 60px;
-      padding: 20px 40px;
-      border-top: 1px solid #2d3148;
-      text-align: center;
-      color: #4a5568;
-      font-size: 0.78rem;
-    }
-    footer span { color: #0078d4; }
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    h1   { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #ddd; }
+    th { background: #f4f4f4; }
+    a  { color: #0078d4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .empty { color: #888; margin-top: 20px; }
+    .upload-link { display: inline-block; margin-top: 20px; background: #0078d4; color: white; padding: 10px 20px; border-radius: 4px; }
+    .upload-link:hover { background: #005fa3; text-decoration: none; }
   </style>
 </head>
 <body>
+  <h1>Image Gallery</h1>
+  <p>All files stored in the Azure Storage Account.</p>
 
-  <nav>
-    <div class="nav-brand">
-      ☁️ DevOps Project
-      <span class="badge">Azure</span>
-    </div>
-    <div class="nav-actions">
-      <a href="{{ url_for('upload') }}">+ Upload Image</a>
-    </div>
-  </nav>
+  {% if blobs %}
+  <table>
+    <tr><th>File Name</th><th>Download</th></tr>
+    {% for blob in blobs %}
+    <tr>
+      <td>{{ blob.name }}</td>
+      <td><a href="{{ blob.url }}" target="_blank">Download</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="empty">No files uploaded yet.</p>
+  {% endif %}
 
-  <div class="hero">
-    <h1>Image <span>Gallery</span></h1>
-    <p>Files stored in Azure Blob Storage — served via Key Vault secured connection.</p>
-  </div>
-
-  <div class="stats-bar">
-    <div class="stat">
-      <div class="stat-dot"></div>
-      <span class="stat-label">Status</span>
-      <span class="stat-value">Live</span>
-    </div>
-    <div class="stat">
-      <div class="stat-dot blue"></div>
-      <span class="stat-label">Storage</span>
-      <span class="stat-value">Azure Blob</span>
-    </div>
-    <div class="stat">
-      <div class="stat-dot blue"></div>
-      <span class="stat-label">Files</span>
-      <span class="stat-value">{{ blobs | length }}</span>
-    </div>
-  </div>
-
-  <main>
-    {% if blobs %}
-      <div class="section-title">Uploaded Images</div>
-      <div class="grid">
-        {% for blob in blobs %}
-        <div class="card">
-          {% set ext = blob.name.rsplit('.', 1)[-1].lower() %}
-          {% if ext in ['jpg','jpeg','png','gif','webp','bmp','svg'] %}
-            <img class="card-thumb" src="{{ blob.url }}" alt="{{ blob.name }}" loading="lazy">
-          {% else %}
-            <div class="card-thumb-placeholder">📄</div>
-          {% endif %}
-          <div class="card-body">
-            <div class="card-name" title="{{ blob.name }}">{{ blob.name }}</div>
-            <a class="card-download" href="{{ blob.url }}" target="_blank">⬇ Download</a>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    {% else %}
-      <div class="empty-state">
-        <div class="icon">🖼️</div>
-        <h3>No images yet</h3>
-        <p>Upload your first image to get started.</p>
-        <a href="{{ url_for('upload') }}">Upload Image</a>
-      </div>
-    {% endif %}
-  </main>
-
-  <footer>
-    Built on <span>Microsoft Azure</span> · App Service · Blob Storage · Key Vault · Terraform · GitHub Actions
-  </footer>
-
+  <br>
+  <a class="upload-link" href="{{ url_for('upload') }}">Upload a new image</a>
 </body>
 </html>
