@@ -38,14 +38,14 @@ jobs:
       - name: Set startup command
         run: |
           az webapp config set \
-            --name imageapp7258 \
+            --name devops-project-het7258 \
             --resource-group imageapp-rg \
             --startup-file "gunicorn --bind=0.0.0.0:8000 app:app"
 
       - name: Deploy to Azure App Service
         run: |
           az webapp deploy \
-            --name imageapp7258 \
+            --name devops-project-het7258 \
             --resource-group imageapp-rg \
             --src-path app.zip \
             --type zip

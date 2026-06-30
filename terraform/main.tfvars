@@ -13,5 +13,5 @@ STORAGE_NAME           = "imageappsa"
 KEYVAULT_NAME          = "imgkv"
 
 ## APP SERVICE
-APP_SERVICE_PLAN_NAME  = "imageapp-plan"
-APP_SERVICE_NAME       = "imageapp"
+APP_SERVICE_PLAN_NAME  = "devops-project-het-plan"
+APP_SERVICE_NAME       = "devops-project-het"

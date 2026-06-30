@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-APP_NAME="imageapp7258"
+APP_NAME="devops-project-het7258"
 RESOURCE_GROUP="imageapp-rg"
 
 echo "==> Adding gunicorn to requirements..."
